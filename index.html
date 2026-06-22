@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vampire Survivors — Guia Completo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+  :root {
+    --bg: #0a0a14;
+    --card: #16162a;
+    --surface: #1e1e38;
+    --accent: #e94560;
+    --gold: #f5c518;
+    --text: #e0e0e0;
+    --muted: #8888aa;
+    --border: #2a2a4a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    background-image: radial-gradient(ellipse at 20% 50%, rgba(233,69,96,0.05) 0%, transparent 50%),
+                     radial-gradient(ellipse at 80% 50%, rgba(245,197,24,0.05) 0%, transparent 50%);
+  }
+
+  header {
+    background: linear-gradient(135deg, #0f0f2a 0%, #16213e 50%, #0f3460 100%);
+    padding: 3rem 1rem 2rem;
+    text-align: center;
+    border-bottom: 3px solid var(--accent);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '🧛';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.06;
+    top: -20px;
+    right: -20px;
+    transform: rotate(15deg);
+  }
+  header h1 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.5);
+    letter-spacing: 2px;
+  }
+  header p { color: var(--muted); font-size: 0.9rem; max-width: 600px; margin: 0 auto; line-height: 1.5; }
+  header .sub { margin-top: 0.3rem; font-size: 0.75rem; color: #666; }
+
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .section-title {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.25s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(233,69,96,0.2);
+  }
+  .card .icon { font-size: 2.5rem; }
+  .card h3 { color: var(--gold); font-size: 0.95rem; }
+  .card .desc { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
+  .card .tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+  .tag-guide { background: #2d6a4f; color: #fff; }
+  .tag-cheat { background: #7b2d8e; color: #fff; }
+  .tag-builds { background: #e94560; color: #fff; }
+
+  .info-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-top: 1rem;
+  }
+  .info-box h3 {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  .info-box ul { padding-left: 1.2rem; }
+  .info-box li {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+    line-height: 1.5;
+  }
+  .info-box li strong { color: var(--text); }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1rem; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🧛 VAMPIRE SURVIVORS</h1>
+  <p>Guia completo em português: dicas, builds, evoluções e tabela visual para iniciantes e veteranos</p>
+  <div class="sub">Baseado no guia de RogueRanker (Steven, 100+ horas) • Dados até v1.14 + Ode to Castlevania</div>
+</header>
+
+<main>
+
+  <div class="section-title">📚 Escolha seu guia</div>
+
+  <div class="card-grid">
+
+    <a class="card" href="guia-completo.html">
+      <div class="icon">📖</div>
+      <h3>Guia Completo</h3>
+      <p class="desc">Texto completo em português com dicas, unlocks, progressão, builds, FAQ e comparações</p>
+      <span class="tag tag-guide">Texto + Busca</span>
+    </a>
+
+    <a class="card" href="cheat-sheet.html">
+      <div class="icon">📊</div>
+      <h3>Cheat Sheet Visual</h3>
+      <p class="desc">Imagem completa das evoluções + tabela com 80+ combinações e busca em tempo real</p>
+      <span class="tag tag-cheat">Visual + Tabela</span>
+    </a>
+
+    <a class="card" href="builds.html">
+      <div class="icon">⚔️</div>
+      <h3>Builds por Personagem</h3>
+      <p class="desc">Cards de build com sprite do personagem, armas recomendadas e PowerUps prioritários</p>
+      <span class="tag tag-builds">Sprites + Builds</span>
+    </a>
+
+  </div>
+
+  <div class="info-box">
+    <h3>📌 Sobre este site</h3>
+    <ul>
+      <li><strong>Guia Completo</strong> — Tradução completa do <a href="https://rogueranker.com/vampire-survivors-guide/" target="_blank" style="color:var(--accent)">RogueRanker Guide</a> com busca por seções</li>
+      <li><strong>Cheat Sheet Visual</strong> — <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2763945512" target="_blank" style="color:var(--accent)">Evolution Cheat Sheet</a> de Neon Rain + tabela pesquisável</li>
+      <li><strong>Builds por Personagem</strong> — Cards customizados com sprites oficiais do wiki e builds da comunidade</li>
+      <li>Dados até versão <strong>1.14</strong> incluindo DLCs: Moonspell, Foscari, Emergency Meeting, Operation Guns e Ode to Castlevania</li>
+      <li>Sprites: <a href="https://vampire.survivors.wiki/" target="_blank" style="color:var(--accent)">Vampire Survivors Wiki</a></li>
+    </ul>
+  </div>
+
+</main>
+
+<footer>
+  <p>Feito com 🧛 base no <a href="https://rogueranker.com/vampire-survivors-guide/" target="_blank" style="color:var(--accent);text-decoration:none;">RogueRanker Guide</a> e na comunidade Reddit</p>
+</footer>
+
+</body>
+</html>

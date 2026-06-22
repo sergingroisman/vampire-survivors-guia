@@ -1,0 +1,507 @@
+1|1|<!DOCTYPE html>
+2|2|<html lang="pt-BR">
+3|3|<head>
+4|4|<meta charset="UTF-8">
+5|5|<meta name="viewport" content="width=device-width, initial-scale=1">
+6|6|<title>Vampire Survivors — Builds por Personagem</title>
+7|7|<style>
+8|8|  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+9|9|
+10|10|  :root {
+11|11|    --bg: #0a0a14;
+12|12|    --card: #16162a;
+13|13|    --surface: #1e1e38;
+14|14|    --accent: #e94560;
+15|15|    --gold: #f5c518;
+16|16|    --text: #e0e0e0;
+17|17|    --muted: #8888aa;
+18|18|    --border: #2a2a4a;
+19|19|  }
+20|20|  * { margin: 0; padding: 0; box-sizing: border-box; }
+21|21|
+22|22|  body {
+23|23|    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+24|24|    background: var(--bg);
+25|25|    color: var(--text);
+26|26|    min-height: 100vh;
+27|27|  }
+28|28|
+29|29|  header {
+30|30|    background: linear-gradient(135deg, #0f0f2a 0%, #16213e 50%, #0f3460 100%);
+31|31|    padding: 2rem 1rem;
+32|32|    text-align: center;
+33|33|    border-bottom: 3px solid var(--accent);
+34|34|  }
+35|35|  header h1 {
+36|36|    font-family: 'Press Start 2P', monospace;
+37|37|    font-size: 1.2rem;
+38|38|    color: var(--gold);
+39|39|    margin-bottom: 0.5rem;
+40|40|    text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+41|41|    letter-spacing: 2px;
+42|42|  }
+43|43|  header p { color: var(--muted); font-size: 0.85rem; }
+44|44|
+45|45|  .search-bar {
+46|46|    max-width: 400px;
+47|47|    margin: 1rem auto 0;
+48|48|    position: relative;
+49|49|  }
+50|50|  .search-bar input {
+51|51|    width: 100%;
+52|52|    padding: 0.6rem 1rem 0.6rem 2.4rem;
+53|53|    border: 1px solid var(--border);
+54|54|    border-radius: 10px;
+55|55|    background: var(--card);
+56|56|    color: var(--text);
+57|57|    font-size: 0.9rem;
+58|58|    outline: none;
+59|59|    transition: border 0.2s;
+60|60|  }
+61|61|  .search-bar input:focus { border-color: var(--accent); }
+62|62|  .search-bar .icon {
+63|63|    position: absolute; left: 0.8rem; top: 50%;
+64|64|    transform: translateY(-50%);
+65|65|    color: var(--muted);
+66|66|  }
+67|67|
+68|68|  main {
+69|69|    max-width: 960px;
+70|70|    margin: 0 auto;
+71|71|    padding: 1.5rem 1rem 4rem;
+72|72|  }
+73|73|
+74|74|  /* ─── Build Card ─── */
+75|75|  .build-card {
+76|76|    background: var(--card);
+77|77|    border: 1px solid var(--border);
+78|78|    border-radius: 16px;
+79|79|    padding: 1.2rem;
+80|80|    margin-bottom: 1.5rem;
+81|81|    display: flex;
+82|82|    gap: 1rem;
+83|83|    align-items: flex-start;
+84|84|    transition: border-color 0.2s, box-shadow 0.2s;
+85|85|  }
+86|86|  .build-card:hover {
+87|87|    border-color: var(--accent);
+88|88|    box-shadow: 0 0 20px rgba(233,69,96,0.15);
+89|89|  }
+90|90|  .build-card.search-hidden { display: none; }
+91|91|
+92|92|  /* ─── Left: Character ─── */
+93|93|  .char-side {
+94|94|    flex-shrink: 0;
+95|95|    width: 120px;
+96|96|    text-align: center;
+97|97|    padding-top: 0.3rem;
+98|98|  }
+99|99|  .char-side .sprite-wrap {
+100|100|    width: 100px;
+101|101|    height: 100px;
+102|102|    margin: 0 auto 0.5rem;
+103|103|    background: var(--surface);
+104|104|    border: 2px solid var(--border);
+105|105|    border-radius: 12px;
+106|106|    display: flex;
+107|107|    align-items: center;
+108|108|    justify-content: center;
+109|109|    overflow: hidden;
+110|110|    position: relative;
+111|111|  }
+112|112|  .char-side .sprite-wrap img {
+113|113|    width: 150%;
+114|114|    max-width: none;
+115|115|    image-rendering: pixelated;
+116|116|    image-rendering: crisp-edges;
+117|117|  }
+118|118|  .char-side .char-name {
+119|119|    font-weight: 700;
+120|120|    color: var(--gold);
+121|121|    font-size: 0.85rem;
+122|122|  }
+123|123|  .char-side .char-sub {
+124|124|    font-size: 0.7rem;
+125|125|    color: var(--muted);
+126|126|  }
+127|127|  .char-side .char-tag {
+128|128|    display: inline-block;
+129|129|    padding: 0.15rem 0.4rem;
+130|130|    border-radius: 6px;
+131|131|    font-size: 0.6rem;
+132|132|    margin-top: 0.3rem;
+133|133|  }
+134|134|  .tag-beginner { background: #2d6a4f; color: #fff; }
+135|135|  .tag-intermediate { background: #f5a623; color: #000; }
+136|136|  .tag-advanced { background: #e94560; color: #fff; }
+137|137|
+138|138|  /* ─── Right: Build ─── */
+139|139|  .build-side {
+140|140|    flex: 1;
+141|141|    min-width: 0;
+142|142|  }
+143|143|  .build-side h3 {
+144|144|    color: #fff;
+145|145|    font-size: 0.95rem;
+146|146|    margin-bottom: 0.3rem;
+147|147|  }
+148|148|  .build-side .build-desc {
+149|149|    color: var(--muted);
+150|150|    font-size: 0.78rem;
+151|151|    margin-bottom: 0.8rem;
+152|152|    line-height: 1.4;
+153|153|  }
+154|154|
+155|155|  .build-section-title {
+156|156|    font-size: 0.72rem;
+157|157|    color: var(--accent);
+158|158|    font-weight: 600;
+159|159|    text-transform: uppercase;
+160|160|    letter-spacing: 1px;
+161|161|    margin-bottom: 0.4rem;
+162|162|    margin-top: 0.6rem;
+163|163|  }
+164|164|  .build-section-title:first-of-type { margin-top: 0; }
+165|165|
+166|166|  .item-row {
+167|167|    display: flex;
+168|168|    align-items: center;
+169|169|    gap: 0.4rem;
+170|170|    padding: 0.3rem 0.5rem;
+171|171|    margin-bottom: 0.2rem;
+172|172|    border-radius: 8px;
+173|173|    transition: background 0.15s;
+174|174|    flex-wrap: wrap;
+175|175|  }
+176|176|  .item-row:hover { background: var(--surface); }
+177|177|
+178|178|  .item-icon {
+179|179|    width: 32px;
+180|180|    height: 32px;
+181|181|    flex-shrink: 0;
+182|182|    background: var(--surface);
+183|183|    border: 1px solid var(--border);
+184|184|    border-radius: 6px;
+185|185|    display: flex;
+186|186|    align-items: center;
+187|187|    justify-content: center;
+188|188|    overflow: hidden;
+189|189|    font-size: 1.1rem;
+190|190|  }
+191|191|  .item-icon img {
+192|192|    width: 100%;
+193|193|    height: 100%;
+194|194|    object-fit: contain;
+195|195|    image-rendering: pixelated;
+196|196|    image-rendering: crisp-edges;
+197|197|  }
+198|198|  .item-icon .fallback {
+199|199|    font-size: 1rem;
+200|200|    line-height: 1;
+201|201|  }
+202|202|  .item-name {
+203|203|    font-size: 0.82rem;
+204|204|    font-weight: 500;
+205|205|    flex-shrink: 0;
+206|206|  }
+207|207|  .item-evo {
+208|208|    font-size: 0.7rem;
+209|209|    color: var(--gold);
+210|210|    margin-left: auto;
+211|211|    white-space: nowrap;
+212|212|  }
+213|213|  .item-desc {
+214|214|    font-size: 0.7rem;
+215|215|    color: var(--muted);
+216|216|    width: 100%;
+217|217|    padding-left: 2.5rem;
+218|218|    margin-top: -0.1rem;
+219|219|  }
+220|220|
+221|221|  .item-sep {
+222|222|    color: var(--accent);
+223|223|    font-weight: 700;
+224|224|    margin: 0 0.2rem;
+225|225|  }
+226|226|
+227|227|  /* ─── Difficulty Legend ─── */
+228|228|  .legend {
+229|229|    display: flex;
+230|230|    gap: 1rem;
+231|231|    justify-content: center;
+232|232|    flex-wrap: wrap;
+233|233|    padding: 1rem;
+234|234|  }
+235|235|  .legend-item {
+236|236|    display: flex;
+237|237|    align-items: center;
+238|238|    gap: 0.4rem;
+239|239|    font-size: 0.75rem;
+240|240|    color: var(--muted);
+241|241|  }
+242|242|  .legend-dot {
+243|243|    width: 10px; height: 10px;
+244|244|    border-radius: 50%;
+245|245|  }
+246|246|
+247|247|  .no-match {
+248|248|    text-align: center;
+249|249|    padding: 3rem;
+250|250|    color: var(--muted);
+251|251|    display: none;
+252|252|  }
+253|253|  .no-match.show { display: block; }
+254|254|
+255|255|  footer {
+256|256|    text-align: center;
+257|257|    padding: 2rem;
+258|258|    color: var(--muted);
+259|259|    font-size: 0.8rem;
+260|260|  }
+261|261|  footer a { color: var(--accent); text-decoration: none; }
+262|262|
+263|263|  @media (max-width: 600px) {
+264|264|    .build-card { flex-direction: column; align-items: center; }
+265|265|    .char-side { width: 80px; }
+266|266|    .char-side .sprite-wrap { width: 80px; height: 80px; }
+267|267|    .item-row { padding: 0.3rem; }
+268|268|    .item-evo { width: 100%; padding-left: 2.5rem; text-align: left; }
+269|269|  }
+270|270|</style>
+271|271|</head>
+272|272|<body>
+<div style="max-width:960px;margin:0 auto;padding:0.5rem 1rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--border)">
+  <a href="index.html" style="color:var(--muted);text-decoration:none;font-size:0.8rem;padding:0.3rem 0.8rem;border-radius:8px;transition:all 0.15s">🏠 Home</a>
+  <a href="guia-completo.html" style="color:var(--muted);text-decoration:none;font-size:0.8rem;padding:0.3rem 0.8rem;border-radius:8px;transition:all 0.15s">📖 Guia</a>
+  <a href="cheat-sheet.html" style="color:var(--muted);text-decoration:none;font-size:0.8rem;padding:0.3rem 0.8rem;border-radius:8px;transition:all 0.15s">📊 Cheat Sheet</a>
+  <a href="builds.html" style="color:var(--gold);text-decoration:none;font-size:0.8rem;padding:0.3rem 0.8rem;border-radius:8px;background:rgba(245,197,24,0.1)">⚔️ Builds</a>
+</div>
+273|273|
+274|274|<header>
+275|275|  <h1>🧛 BUILDS POR PERSONAGEM</h1>
+276|276|  <p>Cards de build — sprite do personagem + armas recomendadas com ícones</p>
+277|277|  <div class="search-bar">
+278|278|    <span class="icon">🔍</span>
+279|279|    <input type="text" id="searchInput" placeholder="Buscar personagem ou arma..." autofocus>
+280|280|  </div>
+281|281|</header>
+282|282|
+283|283|<div class="legend">
+284|284|  <span class="legend-item"><span class="legend-dot" style="background:#2d6a4f"></span> Iniciante</span>
+285|285|  <span class="legend-item"><span class="legend-dot" style="background:#f5a623"></span> Intermediário</span>
+286|286|  <span class="legend-item"><span class="legend-dot" style="background:#e94560"></span> Avançado</span>
+287|287|</div>
+288|288|
+289|289|<main id="buildList">
+290|290|
+291|291|  <!-- ==================== IMELDA ==================== -->
+292|292|  <div class="build-card" data-char="Imelda" data-weapons="Magic Wand,Empty Tome,Santa Water,King Bible,Lightning Ring">
+293|293|    <div class="char-side">
+294|294|      <div class="sprite-wrap">
+295|295|        <img src="https://vampire.survivors.wiki/images/Sprite-Imelda.png" alt="Imelda" loading="lazy">
+296|296|      </div>
+297|297|      <div class="char-name">Imelda</div>
+298|298|      <span class="char-tag tag-beginner">⭐ Iniciante</span>
+299|299|    </div>
+300|300|    <div class="build-side">
+301|301|      <h3>🧙‍♀️ A Run do XP</h3>
+302|302|      <p class="build-desc">Imelda ganha até +30% de XP — o plano é evoluir rápido. Stack Amount, Cooldown e foque em armas AoE que limpam a tela.</p>
+303|303|
+304|304|      <div class="build-section-title">▸ Armas Recomendadas</div>
+305|305|
+306|306|      <div class="item-row">
+307|307|        <div class="item-icon"><img src="https://vampire.survivors.wiki/images/Sprite-Magic_Wand.png" alt="Magic Wand" onerror="this.style.display='none';this.nextSibling.style.display='flex'" loading="lazy"><span class="fallback" style="display:none">🪄</span></div>
+308|308|        <span class="item-name">Magic Wand</span>
+309|309|        <span class="item-sep">+</span>
+310|310|        <div class="item-icon"><img src="https://vampire.survivors.wiki/images/Sprite-Empty_Tome.png" alt="Empty Tome" onerror="this.style.display='none';this.nextSibling.style.display='flex'" loading="lazy"><span class="fallback" style="display:none">📖</span></div>
+311|311|        <span class="item-name">Empty Tome</span>
+312|312|        <span class="item-sep">→</span>
+313|313|        <span class="item-evo">✨ Holy Wand</span>
+314|314|        <span class="item-desc">Tiro rápido que mira no inimigo mais próximo</span>
+315|315|      </div>
+316|316|
+317|317|      <div class="item-row">
+318|318|        <div class="item-icon">💧</div>
+319|319|        <span class="item-name">Santa Water</span>
+320|320|        <span class="item-sep">+</span>
+321|321|        <div class="item-icon">🧲</div>
+322|322|        <span class="item-name">Attractorb</span>
+323|323|        <span class="item-sep">→</span>
+324|324|        <span class="item-evo">✨ La Borra</span>
+325|325|        <span class="item-desc">Poça de dano que segue o personagem — AoE máxima</span>
+326|326|      </div>
+327|327|
+328|328|      <div class="item-row">
+329|329|        <div class="item-icon">📿</div>
+330|330|        <span class="item-name">King Bible</span>
+331|331|        <span class="item-sep">+</span>
+332|332|        <div class="item-icon">⏳</div>
+333|333|        <span class="item-name">Spellbinder</span>
+334|334|        <span class="item-sep">→</span>
+335|335|        <span class="item-evo">✨ Unholy Vespers</span>
+336|336|        <span class="item-desc">Escudo giratório — defesa + dano simultâneos</span>
+337|337|      </div>
+338|338|
+339|339|      <div class="item-row">
+340|340|        <div class="item-icon">⚡</div>
+341|341|        <span class="item-name">Lightning Ring</span>
+342|342|        <span class="item-sep">+</span>
+343|343|        <div class="item-icon">🔁</div>
+344|344|        <span class="item-name">Duplicator</span>
+345|345|        <span class="item-sep">→</span>
+346|346|        <span class="item-evo">✨ Thunder Loop</span>
+347|347|        <span class="item-desc">Limpeza de área com raios</span>
+348|348|      </div>
+349|349|
+350|350|      <div class="build-section-title">▸ PowerUps Prioritários</div>
+351|351|      <div class="item-row">
+352|352|        <span class="item-name">Amount → Growth → Cooldown → Might → Greed</span>
+353|353|      </div>
+354|354|    </div>
+355|355|  </div>
+356|356|
+357|357|  <!-- ==================== POE ==================== -->
+358|358|  <div class="build-card" data-char="Poe" data-weapons="Garlic,Pummarola,Santa Water,King Bible,Runetracer">
+359|359|    <div class="char-side">
+360|360|      <div class="sprite-wrap">
+361|361|        <img src="https://vampire.survivors.wiki/images/Sprite-Poe.png" alt="Poe" loading="lazy">
+362|362|      </div>
+363|363|      <div class="char-name">Poe</div>
+364|364|      <span class="char-tag tag-beginner">⭐ Iniciante</span>
+365|365|    </div>
+366|366|    <div class="build-side">
+367|367|      <h3>🧄 Build do Alho — Fique Parado e Mate</h3>
+368|368|      <p class="build-desc">Garlic + Soul Eater = dano passivo que aniquila inimigos fracos. Combine com La Borra e Unholy Vespers para ficar imóvel enquanto tudo morre ao seu redor.</p>
+369|369|
+370|370|      <div class="build-section-title">▸ Armas Recomendadas</div>
+371|371|
+372|372|      <div class="item-row">
+373|373|        <div class="item-icon">🧄</div>
+374|374|        <span class="item-name">Garlic</span>
+375|375|        <span class="item-sep">+</span>
+376|376|        <div class="item-icon">❤️</div>
+377|377|        <span class="item-name">Pummarola</span>
+378|378|        <span class="item-sep">→</span>
+379|379|        <span class="item-evo">✨ Soul Eater</span>
+380|380|        <span class="item-desc">Dano passivo de área que escala com HP — núcleo da build</span>
+381|381|      </div>
+382|382|
+383|383|      <div class="item-row">
+384|384|        <div class="item-icon">💧</div>
+385|385|        <span class="item-name">Santa Water</span>
+386|386|        <span class="item-sep">+</span>
+387|387|        <div class="item-icon">🧲</div>
+388|388|        <span class="item-name">Attractorb</span>
+389|389|        <span class="item-sep">→</span>
+390|390|        <span class="item-evo">✨ La Borra</span>
+391|391|      </div>
+392|392|
+393|393|      <div class="item-row">
+394|394|        <div class="item-icon">📿</div>
+395|395|        <span class="item-name">King Bible</span>
+396|396|        <span class="item-sep">+</span>
+397|397|        <div class="item-icon">⏳</div>
+398|398|        <span class="item-name">Spellbinder</span>
+399|399|        <span class="item-sep">→</span>
+400|400|        <span class="item-evo">✨ Unholy Vespers</span>
+401|401|      </div>
+402|402|
+403|403|      <div class="item-row">
+404|404|        <div class="item-icon">🏃</div>
+405|405|        <span class="item-name">Runetracer</span>
+406|406|        <span class="item-sep">+</span>
+407|407|        <div class="item-icon">🛡️</div>
+408|408|        <span class="item-name">Armor</span>
+409|409|        <span class="item-sep">→</span>
+410|410|        <span class="item-evo">✨ NO FUTURE</span>
+411|411|      </div>
+412|412|
+413|413|      <div class="build-section-title">▸ PowerUps Prioritários</div>
+414|414|      <div class="item-row">
+415|415|        <span class="item-name">Amount → Might → Growth → Cooldown → Armor</span>
+416|416|      </div>
+417|417|    </div>
+418|418|  </div>
+419|419|
+420|420|  <!-- ==================== GENNARO ==================== -->
+421|421|  <div class="build-card" data-char="Gennaro" data-weapons="Knife,Bracer,Runetracer,Fire Wand,Spinach">
+422|422|    <div class="char-side">
+423|423|      <div class="sprite-wrap">
+424|424|        <img src="https://vampire.survivors.wiki/images/Sprite-Gennaro.png" alt="Gennaro" loading="lazy">
+425|425|      </div>
+426|426|      <div class="char-name">Gennaro</div>
+427|427|      <span class="char-tag tag-beginner">⭐ Iniciante</span>
+428|428|    </div>
+429|429|    <div class="build-side">
+430|430|      <h3>🗡️ Build do +1 Projétil</h3>
+431|431|      <p class="build-desc">Gennaro começa com +1 projétil em TODAS as armas. Isso significa que qualquer arma que você pegar já vem com bônus. Abuse de armas com Amount scaling.</p>
+432|432|
+433|433|      <div class="build-section-title">▸ Armas Recomendadas</div>
+434|434|
+435|435|      <div class="item-row">
+436|436|        <div class="item-icon">🔪</div>
+437|437|        <span class="item-name">Knife</span>
+438|438|        <span class="item-sep">+</span>
+439|439|        <div class="item-icon">💨</div>
+440|440|        <span class="item-name">Bracer</span>
+441|441|        <span class="item-sep">→</span>
+442|442|        <span class="item-evo">✨ Thousand Edge</span>
+443|443|        <span class="item-desc">Enxurrada de facas — com +1 projétil vira parede de dano</span>
+444|444|      </div>
+445|445|
+446|446|      <div class="item-row">
+447|447|        <div class="item-icon">🏃</div>
+448|448|        <span class="item-name">Runetracer</span>
+449|449|        <span class="item-sep">+</span>
+450|450|        <div class="item-icon">🛡️</div>
+451|451|        <span class="item-name">Armor</span>
+452|452|        <span class="item-sep">→</span>
+453|453|        <span class="item-evo">✨ NO FUTURE</span>
+454|454|      </div>
+455|455|
+456|456|      <div class="item-row">
+457|457|        <div class="item-icon">🔥</div>
+458|458|        <span class="item-name">Fire Wand</span>
+459|459|        <span class="item-sep">+</span>
+460|460|        <div class="item-icon">🥬</div>
+461|461|        <span class="item-name">Spinach</span>
+462|462|        <span class="item-sep">→</span>
+463|463|        <span class="item-evo">✨ Hellfire</span>
+464|464|      </div>
+465|465|
+466|466|      <div class="item-row">
+467|467|        <div class="item-icon">⚡</div>
+468|468|        <span class="item-name">Lightning Ring</span>
+469|469|        <span class="item-sep">+</span>
+470|470|        <div class="item-icon">🔁</div>
+471|471|        <span class="item-name">Duplicator</span>
+472|472|        <span class="item-sep">→</span>
+473|473|        <span class="item-evo">✨ Thunder Loop</span>
+474|474|      </div>
+475|475|
+476|476|      <div class="build-section-title">▸ PowerUps Prioritários</div>
+477|477|      <div class="item-row">
+478|478|        <span class="item-name">Amount → Might → Cooldown → Growth → MoveSpeed</span>
+479|479|      </div>
+480|480|    </div>
+481|481|  </div>
+482|482|
+483|483|  <!-- ==================== KROCHI ==================== -->
+484|484|  <div class="build-card" data-char="Krochi" data-weapons="Cross,Clover,King Bible,Santa Water,Lightning Ring">
+485|485|    <div class="char-side">
+486|486|      <div class="sprite-wrap">
+487|487|        <div class="fallback" style="font-size:2.5rem">⚰️</div>
+488|488|      </div>
+489|489|      <div class="char-name">Krochi</div>
+490|490|      <span class="char-tag tag-intermediate">🔶 Intermediário</span>
+491|491|    </div>
+492|492|    <div class="build-side">
+493|493|      <h3>🔄 Build da Revival — Errar é Humano</h3>
+494|494|      <p class="build-desc">Krochi tem 2 revives + o maior move speed do jogo base. Perfeito para aprender novas builds sem medo de morrer cedo. Foque em armas que se beneficiam de velocidade.</p>
+495|495|
+496|496|      <div class="build-section-title">▸ Armas Recomendadas</div>
+497|497|
+498|498|      <div class="item-row">
+499|499|        <div class="item-icon">✝️</div>
+500|500|        <span class="item-name">Cross</span>
+501|

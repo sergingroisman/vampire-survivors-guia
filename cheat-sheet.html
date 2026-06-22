@@ -1,0 +1,447 @@
+1|<!DOCTYPE html>
+2|<html lang="pt-BR">
+3|<head>
+4|<meta charset="UTF-8">
+5|<meta name="viewport" content="width=device-width, initial-scale=1">
+6|<title>Vampire Survivors — Evolution Cheat Sheet</title>
+7|<style>
+8|  :root {
+9|    --bg: #0f0f1a;
+10|    --card: #1a1a2e;
+11|    --accent: #e94560;
+12|    --gold: #f5c518;
+13|    --text: #e0e0e0;
+14|    --muted: #888;
+15|    --border: #2a2a4a;
+16|  }
+17|  * { margin: 0; padding: 0; box-sizing: border-box; }
+18|  body {
+19|    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+20|    background: var(--bg);
+21|    color: var(--text);
+22|    min-height: 100vh;
+23|  }
+24|  header {
+25|    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+26|    padding: 2rem 1rem;
+27|    text-align: center;
+28|    border-bottom: 2px solid var(--accent);
+29|    position: sticky;
+30|    top: 0;
+31|    z-index: 100;
+32|  }
+33|  header h1 {
+34|    font-size: 1.8rem;
+35|    color: var(--gold);
+36|    margin-bottom: 0.5rem;
+37|  }
+38|  header p { color: var(--muted); font-size: 0.9rem; }
+39|  .search-container {
+40|    max-width: 600px;
+41|    margin: 1rem auto 0;
+42|    position: relative;
+43|  }
+44|  .search-container input {
+45|    width: 100%;
+46|    padding: 0.8rem 1rem 0.8rem 2.8rem;
+47|    border: 1px solid var(--border);
+48|    border-radius: 12px;
+49|    background: var(--card);
+50|    color: var(--text);
+51|    font-size: 1rem;
+52|    outline: none;
+53|    transition: border-color 0.2s;
+54|  }
+55|  .search-container input:focus {
+56|    border-color: var(--accent);
+57|  }
+58|  .search-container .icon {
+59|    position: absolute;
+60|    left: 1rem;
+61|    top: 50%;
+62|    transform: translateY(-50%);
+63|    color: var(--muted);
+64|    font-size: 1.2rem;
+65|  }
+66|  .badge-bar {
+67|    display: flex;
+68|    gap: 0.5rem;
+69|    justify-content: center;
+70|    flex-wrap: wrap;
+71|    padding: 1rem;
+72|  }
+73|  .badge {
+74|    padding: 0.3rem 0.8rem;
+75|    border-radius: 20px;
+76|    font-size: 0.75rem;
+77|    font-weight: 600;
+78|    cursor: pointer;
+79|    transition: opacity 0.2s, transform 0.2s;
+80|    border: 1px solid transparent;
+81|  }
+82|  .badge:hover { transform: scale(1.05); }
+83|  .badge.active { border-color: #fff; }
+84|  .badge-base { background: #e94560; color: #fff; }
+85|  .badge-moonspell { background: #7b2d8e; color: #fff; }
+86|  .badge-foscari { background: #2d6a4f; color: #fff; }
+87|  .badge-emergency { background: #c0392b; color: #fff; }
+88|  .badge-guns { background: #555; color: #fff; }
+89|  .badge-castlevania { background: #8b0000; color: #fff; }
+90|  .badge-all { background: var(--gold); color: #000; }
+91|
+92|  main { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+93|
+94|  /* Cheat Sheet Image */
+95|  .cheat-sheet-section {
+96|    background: var(--card);
+97|    border-radius: 16px;
+98|    padding: 1.5rem;
+99|    margin-bottom: 2rem;
+100|    border: 1px solid var(--border);
+101|  }
+102|  .cheat-sheet-section h2 {
+103|    color: var(--gold);
+104|    margin-bottom: 0.5rem;
+105|    font-size: 1.2rem;
+106|  }
+107|  .cheat-sheet-section p { color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem; }
+108|  .cheat-sheet-wrapper {
+109|    width: 100%;
+110|    overflow-x: auto;
+111|    border-radius: 8px;
+112|  }
+113|  .cheat-sheet-wrapper img {
+114|    width: 100%;
+115|    height: auto;
+116|    display: block;
+117|    min-width: 800px;
+118|  }
+119|
+120|  /* Table */
+121|  .evo-table-wrapper { overflow-x: auto; }
+122|  table {
+123|    width: 100%;
+124|    border-collapse: collapse;
+125|    font-size: 0.85rem;
+126|  }
+127|  thead th {
+128|    background: var(--card);
+129|    padding: 0.75rem 0.5rem;
+130|    text-align: left;
+131|    font-weight: 600;
+132|    color: var(--gold);
+133|    border-bottom: 2px solid var(--accent);
+134|    position: sticky;
+135|    top: 200px;
+136|    z-index: 10;
+137|  }
+138|  tbody tr {
+139|    border-bottom: 1px solid var(--border);
+140|    transition: background 0.15s;
+141|  }
+142|  tbody tr:hover { background: rgba(233,69,96,0.08); }
+143|  tbody td {
+144|    padding: 0.6rem 0.5rem;
+145|    vertical-align: middle;
+146|  }
+147|  tbody td:first-child { font-weight: 600; }
+148|  .dlc-tag {
+149|    display: inline-block;
+150|    padding: 0.15rem 0.5rem;
+151|    border-radius: 10px;
+152|    font-size: 0.7rem;
+153|    font-weight: 600;
+154|  }
+155|  .dlc-base { background: #e94560; color: #fff; }
+156|  .dlc-moonspell { background: #7b2d8e; color: #fff; }
+157|  .dlc-foscari { background: #2d6a4f; color: #fff; }
+158|  .dlc-emergency { background: #c0392b; color: #fff; }
+159|  .dlc-guns { background: #555; color: #fff; }
+160|  .dlc-castlevania { background: #8b0000; color: #fff; }
+161|  .union-tag {
+162|    display: inline-block;
+163|    padding: 0.15rem 0.4rem;
+164|    border-radius: 4px;
+165|    font-size: 0.65rem;
+166|    background: #f5c518;
+167|    color: #000;
+168|    font-weight: 700;
+169|  }
+170|  .arrow { color: var(--accent); margin: 0 0.3rem; }
+171|
+172|  .result { color: var(--gold); font-weight: 600; }
+173|  .no-results {
+174|    text-align: center;
+175|    padding: 3rem;
+176|    color: var(--muted);
+177|    display: none;
+178|  }
+179|  .no-results.visible { display: block; }
+180|  .count-bar {
+181|    text-align: center;
+182|    font-size: 0.8rem;
+183|    color: var(--muted);
+184|    padding: 0.5rem;
+185|  }
+186|
+187|  footer {
+188|    text-align: center;
+189|    padding: 2rem;
+190|    color: var(--muted);
+191|    font-size: 0.8rem;
+192|  }
+193|  footer a { color: var(--accent); text-decoration: none; }
+194|
+195|  @media (max-width: 600px) {
+196|    header h1 { font-size: 1.3rem; }
+197|    table { font-size: 0.75rem; }
+198|    tbody td { padding: 0.4rem 0.3rem; }
+199|  }
+200|</style>
+201|</head>
+202|<body>
+<!-- Nav Bar -->
+<div style="max-width:1200px;margin:0 auto;padding:0.5rem 1rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--border)">
+  <a href="index.html" style="color:var(--muted);text-decoration:none;font-size:0.8rem;padding:0.3rem 0.8rem;border-radius:8px;transition:all 0.15s">🏠 Home</a>
+  <a href="guia-completo.html" style="color:var(--muted);text-decoration:none;font-size:0.8rem;padding:0.3rem 0.8rem;border-radius:8px;transition:all 0.15s">📖 Guia</a>
+  <a href="cheat-sheet.html" style="color:var(--gold);text-decoration:none;font-size:0.8rem;padding:0.3rem 0.8rem;border-radius:8px;background:rgba(245,197,24,0.1)">📊 Cheat Sheet</a>
+  <a href="builds.html" style="color:var(--muted);text-decoration:none;font-size:0.8rem;padding:0.3rem 0.8rem;border-radius:8px;transition:all 0.15s">⚔️ Builds</a>
+</div>
+203|
+204|<header>
+205|  <h1>🧛 Vampire Survivors</h1>
+206|  <p>Evolution Cheat Sheet — Base Game + Todos os DLCs</p>
+207|  <div class="search-container">
+208|    <span class="icon">🔍</span>
+209|    <input type="text" id="searchInput" placeholder="Buscar arma, passiva ou evolução..." autofocus>
+210|  </div>
+211|  <div class="badge-bar" id="filterBar">
+212|    <span class="badge badge-all active" data-filter="all">📋 Todas</span>
+213|    <span class="badge badge-base" data-filter="base">🎮 Base Game</span>
+214|    <span class="badge badge-moonspell" data-filter="moonspell">🌙 Moonspell</span>
+215|    <span class="badge badge-foscari" data-filter="foscari">🌿 Foscari</span>
+216|    <span class="badge badge-emergency" data-filter="emergency">🚨 Emergency</span>
+217|    <span class="badge badge-guns" data-filter="guns">🔫 Operation Guns</span>
+218|    <span class="badge badge-castlevania" data-filter="castlevania">🏰 Castlevania</span>
+219|  </div>
+220|</header>
+221|
+222|<main>
+223|
+224|  <!-- Cheat Sheet Image -->
+225|  <section class="cheat-sheet-section">
+226|    <h2>📊 Cheat Sheet Visual</h2>
+227|    <p>Guia completo de evoluções por <strong>Neon Rain</strong> (Steam) — arraste para o lado para ver tudo</p>
+228|    <div class="cheat-sheet-wrapper">
+229|      <img src="https://i.imgur.com/BR7c7MM.png" alt="Vampire Survivors Evolution Cheat Sheet" loading="lazy">
+230|    </div>
+231|  </section>
+232|
+233|  <!-- Table -->
+234|  <section class="cheat-sheet-section" id="table-section">
+235|    <h2>📋 Lista de Evoluções</h2>
+236|    <p>Todas as combinações — use a busca ou os filtros acima</p>
+237|    <div class="count-bar" id="countBar">Mostrando <span id="visibleCount">0</span> de <span id="totalCount">0</span> evoluções</div>
+238|    <div class="evo-table-wrapper">
+239|      <table>
+240|        <thead>
+241|          <tr>
+242|            <th>Arma Base</th>
+243|            <th>+ Passiva</th>
+244|            <th>→ Evolução</th>
+245|            <th>Tipo</th>
+246|            <th>DLC</th>
+247|          </tr>
+248|        </thead>
+249|        <tbody id="evoBody"></tbody>
+250|      </table>
+251|    </div>
+252|    <div class="no-results" id="noResults">Nenhuma evolução encontrada 🔍</div>
+253|  </section>
+254|
+255|  <!-- How to Evolve -->
+256|  <section class="cheat-sheet-section">
+257|    <h2>⚡ Como Evoluir Armas</h2>
+258|    <ol style="padding-left:1.2rem; line-height:1.8; color:var(--text);">
+259|      <li><strong>Maximum a arma</strong> no nível <strong>8</strong></li>
+260|      <li>Tenha a <strong>passiva necessária</strong> no inventário (qualquer nível)</li>
+261|      <li>Abra um <strong>baú</strong> dropado por um champion <strong>após os 10:00</strong> do mapa</li>
+262|    </ol>
+263|    <p style="margin-top:0.8rem; color:var(--muted); font-size:0.85rem;">
+264|      ⚠️ Exceções: Mad Forest (primeiro baú do Glowing Bat pode evoluir).<br>
+265|      Dairy Plant, Il Molise, Cappella Magna, Boss Rash: todos os baús podem evoluir.<br>
+266|      Baús de Arcana (11:00 e 21:00) <strong>não</strong> podem evoluir.<br>
+267|      <strong>Union</strong>: ambas as armas base são removidas e fusaão é adicionada.
+268|    </p>
+269|  </section>
+270|
+271|</main>
+272|
+273|<footer>
+274|  <p>Guia original: <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2763945512" target="_blank">Neon Rain no Steam</a> • Dados até versão 1.14 + Ode to Castlevania</p>
+275|  <p style="margin-top:0.3rem">Ilustração: <a href="https://imgur.com/BR7c7MM" target="_blank">Imgur</a> • Inspirado pelo RogueRanker Guide</p>
+276|</footer>
+277|
+278|<script>
+279|const evolutions = [
+280|  // ===== BASE GAME =====
+281|  { base: 'Whip', passive: 'Hollow Heart', result: 'Bloody Tear', type: 'evolution', dlc: 'base' },
+282|  { base: 'Magic Wand', passive: 'Empty Tome', result: 'Holy Wand', type: 'evolution', dlc: 'base' },
+283|  { base: 'Knife', passive: 'Bracer', result: 'Thousand Edge', type: 'evolution', dlc: 'base' },
+284|  { base: 'Axe', passive: 'Candelabrador', result: 'Death Spiral', type: 'evolution', dlc: 'base' },
+285|  { base: 'Cross', passive: 'Clover', result: 'Heaven Sword', type: 'evolution', dlc: 'base' },
+286|  { base: 'King Bible', passive: 'Spellbinder', result: 'Unholy Vespers', type: 'evolution', dlc: 'base' },
+287|  { base: 'Fire Wand', passive: 'Spinach', result: 'Hellfire', type: 'evolution', dlc: 'base' },
+288|  { base: 'Garlic', passive: 'Pummarola', result: 'Soul Eater', type: 'evolution', dlc: 'base' },
+289|  { base: 'Santa Water', passive: 'Attractorb', result: 'La Borra', type: 'evolution', dlc: 'base' },
+290|  { base: 'Lightning Ring', passive: 'Duplicator', result: 'Thunder Loop', type: 'evolution', dlc: 'base' },
+291|  { base: 'Song of Mana', passive: "Skull O'Maniac", result: 'Mannajja', type: 'evolution', dlc: 'base' },
+292|  { base: 'Pentagram', passive: 'Crown', result: 'Gorgeous Moon', type: 'evolution', dlc: 'base' },
+293|  { base: 'Runetracer', passive: 'Armor', result: 'NO FUTURE', type: 'evolution', dlc: 'base' },
+294|  { base: 'Gatti Amari', passive: 'Stone Mask', result: 'Vicious Hunger', type: 'evolution', dlc: 'base' },
+295|  { base: 'Shadow Pinion', passive: 'Wings', result: 'Valkyrie Turner', type: 'evolution', dlc: 'base' },
+296|  { base: 'Peachone + Ebony Wings', passive: '— (Union)', result: 'Vandalier', type: 'union', dlc: 'base' },
+297|  { base: 'Phiera Der Tuphello + Eight The Sparrow', passive: 'Tiragisú', result: 'Phieraggi', type: 'union', dlc: 'base' },
+298|  { base: 'Vento Sacro + Bloody Tear', passive: '— (Union)', result: 'Fuwalafuwaloo', type: 'union', dlc: 'base' },
+299|  { base: 'Clock Lancet', passive: 'Silver Ring + Gold Ring (max)', result: 'Infinite Corridor', type: 'special', dlc: 'base' },
+300|  { base: 'Laurel', passive: 'Metaglio Left + Metaglio Right (max)', result: 'Crimson Shroud', type: 'special', dlc: 'base' },
+301|  { base: 'Bracelet', passive: '— (Auto)', result: 'Bi-Bracelet → Tri-Bracelet', type: 'gift', dlc: 'base' },
+302|  { base: 'Candybox', passive: '— (Auto)', result: 'Super Candybox II Turbo', type: 'gift', dlc: 'base' },
+303|
+304|  // ===== LEGACY OF THE MOONSPELL =====
+305|  { base: 'Victory Sword', passive: "Torrona's Box (max)", result: 'Sole Solution', type: 'evolution', dlc: 'moonspell' },
+306|  { base: 'Flames of Muspell', passive: "Torrona's Box", result: 'Ashes of Muspell', type: 'evolution', dlc: 'moonspell' },
+307|  { base: 'Silver Wind', passive: 'Pummarola', result: 'Festive Winds', type: 'evolution', dlc: 'moonspell' },
+308|  { base: 'Four Seasons', passive: 'Candelabrador', result: 'Godai Shuffle', type: 'evolution', dlc: 'moonspell' },
+309|  { base: 'Summon Night', passive: 'Duplicator', result: 'Echo Night', type: 'evolution', dlc: 'moonspell' },
+310|  { base: 'Mirage Robe', passive: 'Attractorb', result: "J'Odore", type: 'evolution', dlc: 'moonspell' },
+311|  { base: 'Night Sword', passive: 'Stone Mask', result: 'Murasama', type: 'evolution', dlc: 'moonspell' },
+312|  { base: 'Millie Bolle Blu', passive: 'Spellbinder', result: 'Boo Roo Boolle', type: 'evolution', dlc: 'moonspell' },
+313|
+314|  // ===== TIDES OF THE FOSCARI =====
+315|  { base: 'SpellString + SpellStream + SpellStrike', passive: '— (Union)', result: 'SpellStrom', type: 'union', dlc: 'foscari' },
+316|  { base: 'Flash Arrow', passive: 'Bracer', result: 'Millionaire', type: 'evolution', dlc: 'foscari' },
+317|  { base: 'Eskizzibur', passive: 'Armor', result: 'Legionnaire', type: 'evolution', dlc: 'foscari' },
+318|  { base: 'Prismatic Missile', passive: 'Crown', result: 'Luminaire', type: 'evolution', dlc: 'foscari' },
+319|  { base: 'Shadow Servant', passive: "Skull O'Maniac", result: 'Ophion', type: 'evolution', dlc: 'foscari' },
+320|  { base: 'Glass Fandango', passive: 'Wings', result: 'Celestial Voulge', type: 'evolution', dlc: 'foscari' },
+321|  { base: 'Mace', passive: 'Hollow Heart', result: 'Fingers', type: 'evolution', dlc: 'foscari' },
+322|
+323|  // ===== EMERGENCY MEETING =====
+324|  { base: 'Report!', passive: 'Mini Crewmate', result: 'Emergency Meeting', type: 'evolution', dlc: 'emergency' },
+325|  { base: 'Lucky Swipe', passive: 'Mini Engineer', result: 'Crossed Wires', type: 'evolution', dlc: 'emergency' },
+326|  { base: 'Lifesign Scan', passive: 'Mini Ghost', result: 'Paranormal Scan', type: 'evolution', dlc: 'emergency' },
+327|  { base: 'Just Vent', passive: 'Mini Shapeshifter', result: 'Unjust Ejection', type: 'evolution', dlc: 'emergency' },
+328|  { base: 'Clear Debris', passive: 'Mini Guardian', result: 'Clear Asteroids', type: 'evolution', dlc: 'emergency' },
+329|  { base: 'Sharp Tongue', passive: 'Mini Impostor', result: 'Impostongue', type: 'evolution', dlc: 'emergency' },
+330|  { base: 'Science Rocks', passive: 'Mini Scientist', result: 'Rocket Science', type: 'evolution', dlc: 'emergency' },
+331|
+332|  // ===== OPERATION GUNS =====
+333|  { base: 'Phas3r', passive: 'Empty Tome', result: 'Photonstorm', type: 'evolution', dlc: 'guns' },
+334|  { base: 'Pako Battiliar', passive: 'Hollow Heart', result: 'Mazo Familiar', type: 'evolution', dlc: 'guns' },
+335|  { base: 'Santa Javelin', passive: 'Clover', result: 'Seraphic Cry', type: 'evolution', dlc: 'guns' },
+336|  { base: 'Long Gun', passive: 'Weapon Power-Up', result: 'Prototype A', type: 'evolution', dlc: 'guns' },
+337|  { base: 'Short Gun', passive: 'Weapon Power-Up + Bracer', result: 'Prototype B', type: 'evolution', dlc: 'guns' },
+338|  { base: 'Spread Shot', passive: 'Weapon Power-Up + Empty Tome', result: 'Prototype C', type: 'evolution', dlc: 'guns' },
+339|  { base: 'C-U-Laser', passive: 'Weapon Power-Up + Tiragisú', result: 'Pronto Beam', type: 'evolution', dlc: 'guns' },
+340|  { base: 'Firearm', passive: 'Weapon Power-Up + Candelabrador', result: 'Fire-L3GS', type: 'evolution', dlc: 'guns' },
+341|  { base: 'Sonic Bloom', passive: 'Weapon Power-Up + Armor', result: 'Wave Beam', type: 'evolution', dlc: 'guns' },
+342|  { base: 'Homing Miss', passive: 'Weapon Power-Up + Duplicator', result: 'Multistage Missiles', type: 'evolution', dlc: 'guns' },
+343|  { base: 'Diver Mines', passive: 'Weapon Power-Up + Attractorb', result: 'Atmo-Torpedo', type: 'evolution', dlc: 'guns' },
+344|  { base: 'Blade Crossbow', passive: 'Weapon Power-Up + Clover', result: 'BFC2000-AD', type: 'evolution', dlc: 'guns' },
+345|  { base: 'Prism Lass', passive: 'Weapon Power-Up + Wings', result: 'Time Warp', type: 'evolution', dlc: 'guns' },
+346|  { base: 'Metal Claw', passive: 'Weapon Power-Up + Hollow Heart', result: 'Big Fuzzy Fist', type: 'evolution', dlc: 'guns' },
+347|
+348|  // ===== ODE TO CASTLEVANIA =====
+349|  { base: 'Alchemy Whip', passive: 'Tiragisú', result: 'Vampire Killer', type: 'evolution', dlc: 'castlevania' },
+350|  { base: 'Wind Whip', passive: 'Crown', result: 'Spirit Tornado Tip', type: 'evolution', dlc: 'castlevania' },
+351|  { base: 'Platinum Whip', passive: 'Clover', result: 'Cross Crasher Tip', type: 'evolution', dlc: 'castlevania' },
+352|  { base: 'Dragon Water Whip', passive: 'Attractorb', result: 'Hydrostormer Tip', type: 'evolution', dlc: 'castlevania' },
+353|  { base: 'Sonic Whip', passive: "Skull O'Maniac", result: 'Crissaegrim Tip', type: 'evolution', dlc: 'castlevania' },
+354|  { base: 'Jet Black Whip', passive: 'Stone Mask', result: 'Mormegil Tip', type: 'evolution', dlc: 'castlevania' },
+355|  { base: 'Vibhuti Whip', passive: 'Candelabrador', result: 'Daybreaker Tip', type: 'evolution', dlc: 'castlevania' },
+356|  { base: 'Vanitas Whip', passive: 'Hollow Heart', result: 'Aurablaster Tip', type: 'evolution', dlc: 'castlevania' },
+357|  { base: 'Shuriken', passive: 'Empty Tome', result: 'Yagyu Shuriken', type: 'evolution', dlc: 'castlevania' },
+358|  { base: 'Curved Knife', passive: 'Bracer', result: 'Bwaka Knife', type: 'evolution', dlc: 'castlevania' },
+359|  { base: 'Javelin', passive: 'Spellbinder', result: 'Long Inus', type: 'evolution', dlc: 'castlevania' },
+360|  { base: 'Discus', passive: 'Parm Aegis', result: 'Stellar Blade', type: 'evolution', dlc: 'castlevania' },
+361|  { base: 'Iron Ball', passive: 'Armor', result: 'Wrecking Ball', type: 'evolution', dlc: 'castlevania' },
+362|  { base: 'Silver Revolver', passive: "Karoma's Mana", result: "Guardian's Tome", type: 'evolution', dlc: 'castlevania' },
+363|  { base: 'Hand Grenade', passive: 'Candelabrador', result: 'The RPG', type: 'evolution', dlc: 'castlevania' },
+364|  { base: 'Alucard Sword', passive: 'Tiragisú', result: 'Alucard Spear', type: 'evolution', dlc: 'castlevania' },
+365|  { base: 'Raging Fire', passive: 'Spinach', result: 'Salamender', type: 'evolution', dlc: 'castlevania' },
+366|  { base: 'Whip of Rage', passive: 'Clover', result: 'Cross Crasher', type: 'evolution', dlc: 'castlevania' },
+367|  { base: 'Trident', passive: 'Hollow Heart + Duplicator', result: 'Meji Sword', type: 'evolution', dlc: 'castlevania' },
+368|];
+369|
+370|// Render
+371|const tbody = document.getElementById('evoBody');
+372|const totalCount = document.getElementById('totalCount');
+373|const visibleCount = document.getElementById('visibleCount');
+374|const noResults = document.getElementById('noResults');
+375|const searchInput = document.getElementById('searchInput');
+376|const badges = document.querySelectorAll('.badge');
+377|
+378|let currentFilter = 'all';
+379|let currentQuery = '';
+380|
+381|function render() {
+382|  const q = currentQuery.toLowerCase().trim();
+383|  const filtered = evolutions.filter(evo => {
+384|    // DLC filter
+385|    if (currentFilter !== 'all' && evo.dlc !== currentFilter) return false;
+386|    // Search
+387|    if (q) {
+388|      const searchTarget = `${evo.base} ${evo.passive} ${evo.result} ${evo.dlc} ${evo.type}`.toLowerCase();
+389|      // Split query into terms, all must match
+390|      const terms = q.split(/\s+/).filter(t => t.length > 0);
+391|      return terms.every(t => searchTarget.includes(t));
+392|    }
+393|    return true;
+394|  });
+395|
+396|  // Update counts
+397|  totalCount.textContent = evolutions.length;
+398|  visibleCount.textContent = filtered.length;
+399|
+400|  if (filtered.length === 0) {
+401|    noResults.classList.add('visible');
+402|    tbody.innerHTML = '';
+403|    return;
+404|  }
+405|  noResults.classList.remove('visible');
+406|
+407|  tbody.innerHTML = filtered.map(evo => {
+408|    const dlcLabel = { base: 'Base Game', moonspell: 'Moonspell', foscari: 'Foscari', emergency: 'Emergency', guns: 'Op. Guns', castlevania: 'Castlevania' }[evo.dlc] || evo.dlc;
+409|    const typeLabel = evo.type === 'union' ? '<span class="union-tag">UNION</span>' : evo.type === 'special' ? '⚡ Especial' : evo.type === 'gift' ? '🎁 Presente' : '';
+410|    return `<tr>
+411|      <td>${evo.base}</td>
+412|      <td>${evo.passive}</td>
+413|      <td class="result">${evo.result}</td>
+414|      <td>${typeLabel}</td>
+415|      <td><span class="dlc-tag dlc-${evo.dlc}">${dlcLabel}</span></td>
+416|    </tr>`;
+417|  }).join('');
+418|}
+419|
+420|// Badge clicks
+421|badges.forEach(b => {
+422|  b.addEventListener('click', () => {
+423|    badges.forEach(x => x.classList.remove('active'));
+424|    b.classList.add('active');
+425|    currentFilter = b.dataset.filter;
+426|    render();
+427|  });
+428|});
+429|
+430|// Search
+431|searchInput.addEventListener('input', () => {
+432|  currentQuery = searchInput.value;
+433|  render();
+434|});
+435|
+436|render();
+437|</script>
+438|</body>
+439|</html>
+440|
