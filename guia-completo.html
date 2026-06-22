@@ -1,507 +1,506 @@
-1|<!DOCTYPE html>
-2|<html lang="pt-BR">
-3|<head>
-4|<meta charset="UTF-8">
-5|<meta name="viewport" content="width=device-width, initial-scale=1">
-6|<title>Guia Vampire Survivors — Dicas, Builds e Progressão</title>
-7|<style>
-8|  :root {
-9|    --bg: #0a0a14;
-10|    --card: #16162a;
-11|    --surface: #1e1e38;
-12|    --accent: #e94560;
-13|    --gold: #f5c518;
-14|    --text: #e0e0e0;
-15|    --muted: #8888aa;
-16|    --border: #2a2a4a;
-17|    --quote-bg: rgba(233,69,96,0.08);
-18|    --quote-border: #e94560;
-19|  }
-20|  * { margin: 0; padding: 0; box-sizing: border-box; }
-21|
-22|  body {
-23|    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-24|    background: var(--bg);
-25|    color: var(--text);
-26|    line-height: 1.7;
-27|    font-size: 0.95rem;
-28|  }
-29|
-30|  /* ─── HEADER ─── */
-31|  header {
-32|    background: linear-gradient(135deg, #0f0f2a 0%, #16213e 40%, #0f3460 100%);
-33|    padding: 2.5rem 1rem 1.5rem;
-34|    text-align: center;
-35|    border-bottom: 3px solid var(--accent);
-36|    position: sticky;
-37|    top: 0;
-38|    z-index: 100;
-39|  }
-40|  header h1 {
-41|    font-size: 1.8rem;
-42|    color: var(--gold);
-43|    margin-bottom: 0.3rem;
-44|  }
-45|  header p { color: var(--muted); font-size: 0.85rem; }
-46|  .header-meta { color: var(--muted); font-size: 0.75rem; margin-top: 0.3rem; }
-47|  .header-meta a { color: var(--accent); text-decoration: none; }
-48|
-49|  .search-wrap {
-50|    max-width: 500px;
-51|    margin: 0.8rem auto 0;
-52|    position: relative;
-53|  }
-54|  .search-wrap input {
-55|    width: 100%;
-56|    padding: 0.6rem 1rem 0.6rem 2.4rem;
-57|    border: 1px solid var(--border);
-58|    border-radius: 10px;
-59|    background: var(--card);
-60|    color: var(--text);
-61|    font-size: 0.9rem;
-62|    outline: none;
-63|    transition: border 0.2s;
-64|  }
-65|  .search-wrap input:focus { border-color: var(--accent); }
-66|  .search-wrap .search-icon {
-67|    position: absolute; left: 0.8rem; top: 50%;
-68|    transform: translateY(-50%);
-69|    color: var(--muted);
-70|  }
-71|
-72|  /* ─── TOC ─── */
-73|  .toc-wrapper {
-74|    max-width: 900px;
-75|    margin: 1.5rem auto;
-76|    padding: 0 1rem;
-77|  }
-78|  .toc-card {
-79|    background: var(--card);
-80|    border: 1px solid var(--border);
-81|    border-radius: 12px;
-82|    padding: 1.2rem;
-83|  }
-84|  .toc-card h2 {
-85|    color: var(--gold);
-86|    font-size: 1rem;
-87|    margin-bottom: 0.8rem;
-88|  }
-89|  .toc-grid {
-90|    display: grid;
-91|    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-92|    gap: 0.4rem;
-93|  }
-94|  .toc-grid a {
-95|    color: var(--accent);
-96|    text-decoration: none;
-97|    font-size: 0.85rem;
-98|    padding: 0.3rem 0.5rem;
-99|    border-radius: 6px;
-100|    transition: background 0.15s;
-101|  }
-102|  .toc-grid a:hover { background: rgba(233,69,96,0.12); }
-103|
-104|  /* ─── MAIN ─── */
-105|  main { max-width: 900px; margin: 0 auto; padding: 0 1rem 4rem; }
-106|
-107|  .section {
-108|    background: var(--card);
-109|    border: 1px solid var(--border);
-110|    border-radius: 14px;
-111|    padding: 1.5rem;
-112|    margin-bottom: 1.5rem;
-113|  }
-114|  .section h2 {
-115|    color: var(--gold);
-116|    font-size: 1.3rem;
-117|    margin-bottom: 1rem;
-118|    padding-bottom: 0.5rem;
-119|    border-bottom: 1px solid var(--border);
-120|  }
-121|  .section h3 {
-122|    color: var(--accent);
-123|    font-size: 1rem;
-124|    margin: 1.2rem 0 0.5rem;
-125|  }
-126|  .section h4 {
-127|    color: var(--text);
-128|    font-size: 0.9rem;
-129|    margin: 1rem 0 0.4rem;
-130|    font-weight: 600;
-131|  }
-132|  .section p { margin-bottom: 0.8rem; }
-133|  .section ul, .section ol { margin: 0.5rem 0 1rem 1.4rem; }
-134|  .section li { margin-bottom: 0.3rem; }
-135|
-136|  .section strong { color: #fff; }
-137|
-138|  /* ─── QUOTES ─── */
-139|  blockquote {
-140|    margin: 0.8rem 0;
-141|    padding: 0.6rem 1rem;
-142|    border-left: 3px solid var(--quote-border);
-143|    background: var(--quote-bg);
-144|    border-radius: 0 8px 8px 0;
-145|    font-style: italic;
-146|    color: #ccc;
-147|  }
-148|  blockquote .author {
-149|    display: block;
-150|    margin-top: 0.3rem;
-151|    font-size: 0.8rem;
-152|    color: var(--muted);
-153|    font-style: normal;
-154|  }
-155|
-156|  /* ─── TABLES ─── */
-157|  .table-wrap { overflow-x: auto; margin: 0.8rem 0; }
-158|  table {
-159|    width: 100%;
-160|    border-collapse: collapse;
-161|    font-size: 0.82rem;
-162|  }
-163|  thead th {
-164|    background: var(--surface);
-165|    padding: 0.5rem 0.6rem;
-166|    text-align: left;
-167|    font-weight: 600;
-168|    color: var(--gold);
-169|    border-bottom: 2px solid var(--accent);
-170|    white-space: nowrap;
-171|  }
-172|  tbody td {
-173|    padding: 0.4rem 0.6rem;
-174|    border-bottom: 1px solid var(--border);
-175|  }
-176|  tbody tr:hover { background: rgba(233,69,96,0.05); }
-177|
-178|  .tag {
-179|    display: inline-block;
-180|    padding: 0.12rem 0.4rem;
-181|    border-radius: 8px;
-182|    font-size: 0.7rem;
-183|    font-weight: 600;
-184|  }
-185|  .tag-high { background: #e94560; color: #fff; }
-186|  .tag-med  { background: #f5a623; color: #000; }
-187|  .tag-low  { background: #555; color: #ccc; }
-188|
-189|  /* ─── BUILDS ─── */
-190|  .build-card {
-191|    background: var(--surface);
-192|    border: 1px solid var(--border);
-193|    border-radius: 10px;
-194|    padding: 1rem;
-195|    margin: 0.8rem 0;
-196|  }
-197|  .build-card h4 { color: var(--gold); margin-top: 0; }
-198|
-199|  /* ─── EVOLUTION GRID ─── */
-200|  .evo-grid {
-201|    display: grid;
-202|    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-203|    gap: 0.5rem;
-204|    margin: 0.8rem 0;
-205|  }
-206|  .evo-item {
-207|    background: var(--surface);
-208|    border: 1px solid var(--border);
-209|    border-radius: 8px;
-210|    padding: 0.5rem 0.7rem;
-211|    font-size: 0.82rem;
-212|    transition: border-color 0.2s;
-213|    display: flex;
-214|    align-items: center;
-215|    gap: 0.4rem;
-216|    flex-wrap: wrap;
-217|  }
-218|  .evo-item:hover { border-color: var(--accent); }
-219|  .evo-arrow { color: var(--accent); margin: 0 0.2rem; }
-220|  .evo-result { color: var(--gold); font-weight: 600; }
-221|  .evo-dlc {
-222|    font-size: 0.65rem;
-223|    padding: 0.08rem 0.35rem;
-224|    border-radius: 6px;
-225|    margin-left: auto;
-226|    white-space: nowrap;
-227|  }
-228|  .dlc-base { background: #e94560; color: #fff; }
-229|  .dlc-moonspell { background: #7b2d8e; color: #fff; }
-230|  .dlc-foscari { background: #2d6a4f; color: #fff; }
-231|  .dlc-emergency { background: #c0392b; color: #fff; }
-232|  .dlc-guns { background: #555; color: #fff; }
-233|  .dlc-castlevania { background: #8b0000; color: #fff; }
-234|  .union-badge {
-235|    background: var(--gold); color: #000;
-236|    font-size: 0.6rem; font-weight: 700;
-237|    padding: 0.08rem 0.3rem; border-radius: 3px;
-238|    margin-left: 0.3rem;
-239|  }
-240|
-241|  /* ─── PROGRESSION BAR ─── */
-242|  .prog-step {
-243|    display: flex;
-244|    align-items: center;
-245|    gap: 0.8rem;
-246|    padding: 0.5rem 0;
-247|    border-bottom: 1px solid var(--border);
-248|  }
-249|  .prog-step:last-child { border: none; }
-250|  .prog-num {
-251|    width: 28px; height: 28px;
-252|    border-radius: 50%;
-253|    background: var(--accent);
-254|    color: #fff;
-255|    display: flex; align-items: center; justify-content: center;
-256|    font-size: 0.8rem; font-weight: 700;
-257|    flex-shrink: 0;
-258|  }
-259|
-260|  /* ─── COMPARE TABLE ─── */
-261|  .compare-grid {
-262|    display: grid;
-263|    grid-template-columns: 1fr 1fr;
-264|    gap: 1rem;
-265|    margin: 0.8rem 0;
-266|  }
-267|  .compare-col {
-268|    background: var(--surface);
-269|    border: 1px solid var(--border);
-270|    border-radius: 10px;
-271|    padding: 0.8rem;
-272|  }
-273|  .compare-col h4 { color: var(--gold); text-align: center; margin-bottom: 0.5rem; }
-274|  .compare-col ul { margin: 0; }
-275|  @media (max-width: 600px) { .compare-grid { grid-template-columns: 1fr; } }
-276|
-277|  /* ─── HIGHLIGHT ─── */
-278|  .highlight {
-279|    background: linear-gradient(135deg, rgba(245,197,24,0.08), rgba(233,69,96,0.08));
-280|    border: 1px solid rgba(245,197,24,0.3);
-281|    border-radius: 10px;
-282|    padding: 1rem;
-283|    margin: 0.8rem 0;
-284|  }
-285|  .highlight p { margin: 0; }
-286|
-287|  /* ─── FOOTER ─── */
-288|  footer {
-289|    text-align: center;
-290|    padding: 2rem;
-291|    color: var(--muted);
-292|    font-size: 0.8rem;
-293|  }
-294|  footer a { color: var(--accent); text-decoration: none; }
-295|
-296|  /* ─── SEARCH HIDE ─── */
-297|  .search-hidden { display: none !important; }
-298|  .no-match-message {
-299|    text-align: center;
-300|    padding: 2rem;
-301|    color: var(--muted);
-302|    display: none;
-303|  }
-304|  .no-match-message.show { display: block; }
-305|
-306|  @media (max-width: 600px) {
-307|    header h1 { font-size: 1.3rem; }
-308|    .section { padding: 1rem; }
-309|    .toc-grid { grid-template-columns: 1fr 1fr; }
-310|  }
-311|</style>
-312|</head>
-313|<body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia Vampire Survivors — Dicas, Builds e Progressão</title>
+<style>
+  :root {
+    --bg: #0a0a14;
+    --card: #16162a;
+    --surface: #1e1e38;
+    --accent: #e94560;
+    --gold: #f5c518;
+    --text: #e0e0e0;
+    --muted: #8888aa;
+    --border: #2a2a4a;
+    --quote-bg: rgba(233,69,96,0.08);
+    --quote-border: #e94560;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background: linear-gradient(135deg, #0f0f2a 0%, #16213e 40%, #0f3460 100%);
+    padding: 2.5rem 1rem 1.5rem;
+    text-align: center;
+    border-bottom: 3px solid var(--accent);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  header h1 {
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  header p { color: var(--muted); font-size: 0.85rem; }
+  .header-meta { color: var(--muted); font-size: 0.75rem; margin-top: 0.3rem; }
+  .header-meta a { color: var(--accent); text-decoration: none; }
+
+  .search-wrap {
+    max-width: 500px;
+    margin: 0.8rem auto 0;
+    position: relative;
+  }
+  .search-wrap input {
+    width: 100%;
+    padding: 0.6rem 1rem 0.6rem 2.4rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card);
+    color: var(--text);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border 0.2s;
+  }
+  .search-wrap input:focus { border-color: var(--accent); }
+  .search-wrap .search-icon {
+    position: absolute; left: 0.8rem; top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+  }
+
+  /* ─── TOC ─── */
+  .toc-wrapper {
+    max-width: 900px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+  }
+  .toc-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+  }
+  .toc-card h2 {
+    color: var(--gold);
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.4rem;
+  }
+  .toc-grid a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .toc-grid a:hover { background: rgba(233,69,96,0.12); }
+
+  /* ─── MAIN ─── */
+  main { max-width: 900px; margin: 0 auto; padding: 0 1rem 4rem; }
+
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .section h2 {
+    color: var(--gold);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section h3 {
+    color: var(--accent);
+    font-size: 1rem;
+    margin: 1.2rem 0 0.5rem;
+  }
+  .section h4 {
+    color: var(--text);
+    font-size: 0.9rem;
+    margin: 1rem 0 0.4rem;
+    font-weight: 600;
+  }
+  .section p { margin-bottom: 0.8rem; }
+  .section ul, .section ol { margin: 0.5rem 0 1rem 1.4rem; }
+  .section li { margin-bottom: 0.3rem; }
+
+  .section strong { color: #fff; }
+
+  /* ─── QUOTES ─── */
+  blockquote {
+    margin: 0.8rem 0;
+    padding: 0.6rem 1rem;
+    border-left: 3px solid var(--quote-border);
+    background: var(--quote-bg);
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: #ccc;
+  }
+  blockquote .author {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  /* ─── TABLES ─── */
+  .table-wrap { overflow-x: auto; margin: 0.8rem 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+  thead th {
+    background: var(--surface);
+    padding: 0.5rem 0.6rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--gold);
+    border-bottom: 2px solid var(--accent);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  tbody tr:hover { background: rgba(233,69,96,0.05); }
+
+  .tag {
+    display: inline-block;
+    padding: 0.12rem 0.4rem;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+  .tag-high { background: #e94560; color: #fff; }
+  .tag-med  { background: #f5a623; color: #000; }
+  .tag-low  { background: #555; color: #ccc; }
+
+  /* ─── BUILDS ─── */
+  .build-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 0.8rem 0;
+  }
+  .build-card h4 { color: var(--gold); margin-top: 0; }
+
+  /* ─── EVOLUTION GRID ─── */
+  .evo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.5rem;
+    margin: 0.8rem 0;
+  }
+  .evo-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.82rem;
+    transition: border-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .evo-item:hover { border-color: var(--accent); }
+  .evo-arrow { color: var(--accent); margin: 0 0.2rem; }
+  .evo-result { color: var(--gold); font-weight: 600; }
+  .evo-dlc {
+    font-size: 0.65rem;
+    padding: 0.08rem 0.35rem;
+    border-radius: 6px;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  .dlc-base { background: #e94560; color: #fff; }
+  .dlc-moonspell { background: #7b2d8e; color: #fff; }
+  .dlc-foscari { background: #2d6a4f; color: #fff; }
+  .dlc-emergency { background: #c0392b; color: #fff; }
+  .dlc-guns { background: #555; color: #fff; }
+  .dlc-castlevania { background: #8b0000; color: #fff; }
+  .union-badge {
+    background: var(--gold); color: #000;
+    font-size: 0.6rem; font-weight: 700;
+    padding: 0.08rem 0.3rem; border-radius: 3px;
+    margin-left: 0.3rem;
+  }
+
+  /* ─── PROGRESSION BAR ─── */
+  .prog-step {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .prog-step:last-child { border: none; }
+  .prog-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ─── COMPARE TABLE ─── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 0.8rem 0;
+  }
+  .compare-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.8rem;
+  }
+  .compare-col h4 { color: var(--gold); text-align: center; margin-bottom: 0.5rem; }
+  .compare-col ul { margin: 0; }
+  @media (max-width: 600px) { .compare-grid { grid-template-columns: 1fr; } }
+
+  /* ─── HIGHLIGHT ─── */
+  .highlight {
+    background: linear-gradient(135deg, rgba(245,197,24,0.08), rgba(233,69,96,0.08));
+    border: 1px solid rgba(245,197,24,0.3);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 0.8rem 0;
+  }
+  .highlight p { margin: 0; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* ─── SEARCH HIDE ─── */
+  .search-hidden { display: none !important; }
+  .no-match-message {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    display: none;
+  }
+  .no-match-message.show { display: block; }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.3rem; }
+    .section { padding: 1rem; }
+    .toc-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
 <div style="max-width:900px;margin:0 auto;padding:0.5rem 1rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--border)">
   <a href="index.html" style="color:var(--muted);text-decoration:none;font-size:0.8rem;padding:0.3rem 0.8rem;border-radius:8px;transition:all 0.15s">🏠 Home</a>
   <a href="guia-completo.html" style="color:var(--gold);text-decoration:none;font-size:0.8rem;padding:0.3rem 0.8rem;border-radius:8px;background:rgba(245,197,24,0.1)">📖 Guia</a>
   <a href="cheat-sheet.html" style="color:var(--muted);text-decoration:none;font-size:0.8rem;padding:0.3rem 0.8rem;border-radius:8px;transition:all 0.15s">📊 Cheat Sheet</a>
   <a href="builds.html" style="color:var(--muted);text-decoration:none;font-size:0.8rem;padding:0.3rem 0.8rem;border-radius:8px;transition:all 0.15s">⚔️ Builds</a>
 </div>
-314|
-315|<header>
-316|  <h1>🧛 Vampire Survivors</h1>
-317|  <p>Guia Completo: Dicas, Builds e Progressão para Iniciantes</p>
-318|  <div class="header-meta">
-319|    Baseado no guia de <a href="https://rogueranker.com/vampire-survivors-guide/" target="_blank">RogueRanker</a> •
-320|    Steven (100+ horas) • Março 2026
-321|  </div>
-322|  <div class="search-wrap">
-323|    <span class="search-icon">🔍</span>
-324|    <input type="text" id="searchInput" placeholder="Buscar no guia..." autofocus>
-325|  </div>
-326|</header>
-327|
-328|<!-- ─── TOC ─── -->
-329|<div class="toc-wrapper">
-330|  <div class="toc-card">
-331|    <h2>📑 Sumário</h2>
-332|    <div class="toc-grid">
-333|      <a href="#tldr">🎯 TL;DR — Dicas Rápidas</a>
-334|      <a href="#beginners">👶 Guia para Iniciantes</a>
-335|      <a href="#unlock">🔓 Guia de Unlocks</a>
-336|      <a href="#progression">⚡ Guia de Progressão</a>
-337|      <a href="#builds">🏗️ Melhores Builds</a>
-338|      <a href="#evolutions">📊 Tabela de Evoluções</a>
-339|      <a href="#faq">❓ FAQ</a>
-340|      <a href="#comparison">🆚 VS vs Alternativas</a>
-341|      <a href="#conclusion">💎 Conclusão</a>
-342|    </div>
-343|  </div>
-344|</div>
-345|
-346|<!-- ─── MAIN ─── -->
-347|<main id="guideContent">
-348|
-349|<!-- TL;DR -->
-350|<section class="section" id="tldr" data-section="tldr">
-351|  <h2>🎯 TL;DR — Dicas Rápidas</h2>
-352|  <div class="table-wrap">
-353|    <table>
-354|      <thead>
-355|        <tr><th>Dica</th><th>Por que importa</th></tr>
-356|      </thead>
-357|      <tbody>
-358|        <tr><td><strong>Evolua uma arma por vez</strong></td><td>Evoluções exigem arma no nível 8; espalhar atrasa seus maiores power spikes</td></tr>
-359|        <tr><td><strong>Comece na Inlaid Library</strong></td><td>Curva de dificuldade mais suave que Mad Forest, além de itens grátis no chão que expandem seus slots passivos</td></tr>
-360|        <tr><td><strong>Invista em Amount e Might primeiro nos PowerUps</strong></td><td>Projéteis extras e dano plano aceleram o loop de leveling mais que qualquer stat defensivo</td></tr>
-361|        <tr><td><strong>Siga o menu Unlocks de cima pra baixo</strong></td><td>É o guia de progressão real do jogo; cada objetivo desbloqueia algo útil</td></tr>
-362|        <tr><td><strong>Pegue o Milky Way Map cedo</strong></td><td>O minimapa muda como você navega em cada fase; pegue em Dairy Plant assim que puder</td></tr>
-363|        <tr><td><strong>Mantenha Garlic e King Bible no início</strong></td><td>Dano e controle de área enquanto você aprende as evoluções</td></tr>
-364|        <tr><td><strong>Não se estresse com a ordem dos PowerUps</strong></td><td>Você pode reembolsar tudo sem custo — erros iniciais não custam nada</td></tr>
-365|        <tr><td><strong>Wiki para Secrets, Unlocks para todo o resto</strong></td><td>Secrets são propositalmente vagos; a wiki é o que a Poncle espera que você use</td></tr>
-366|      </tbody>
-367|    </table>
-368|  </div>
-369|</section>
-370|
-371|<!-- BEGINNER -->
-372|<section class="section" id="beginners" data-section="beginners">
-373|  <h2>👶 Guia para Iniciantes</h2>
-374|
-375|  <h3>O Loop Principal</h3>
-376|  <p>Você escolhe um personagem, se move pelo mapa, suas armas atiram automaticamente e os inimigos vêm em ondas que escalam até você morrer ou o marcador de 30 minutos chegar. Nesse ponto, um Ceifador imatável aparece e encerra sua run.</p>
-377|  <p>Cada vez que você sobe de nível, escolhe um entre três (ou quatro, com os PowerUps certos) itens para adicionar ou evoluir. Armas evoluem para versões muito mais poderosas se você cumprir condições específicas — geralmente maximizar a arma no nível 8 e ter um item passivo específico no inventário ao abrir um baú.</p>
-378|  <p><strong>Dica de ouro:</strong> Essas armas evoluídas são o jogo inteiro.</p>
-379|
-380|  <h3>O Maior Erro de Iniciante</h3>
-381|  <blockquote>
-382|    "Foque em uma coisa sempre que possível, só pegue itens novos se não puder fortalecer um existente."
-383|    <span class="author">— u/LolYouFuckingLoser</span>
-384|  </blockquote>
-385|  <p><strong>Uma arma no máximo é muito mais poderosa que quatro armas no nível 1.</strong> Você precisa da arma máxima para desbloquear a evolução, e as evoluções são o que carregam as runs após os 20 minutos.</p>
-386|
-387|  <h3>Melhores Personagens para Começar</h3>
-388|  <div class="table-wrap">
-389|    <table>
-390|      <thead>
-391|        <tr><th>Personagem</th><th>Desbloqueio</th><th>Arma Inicial</th><th>Por que é bom</th></tr>
-392|      </thead>
-393|      <tbody>
-394|        <tr><td><strong>Imelda</strong></td><td>Padrão</td><td>Magic Wand</td><td>Bônus de XP até +30% a cada 5 níveis — evolui mais rápido</td></tr>
-395|        <tr><td><strong>Poe</strong></td><td>Padrão</td><td>Garlic</td><td>Campo de dano passivo mantém inimigos fracos longe</td></tr>
-396|        <tr><td><strong>Gennaro</strong></td><td>500 gold</td><td>Knife</td><td>+1 projétil em toda arma desde o início</td></tr>
-397|        <tr><td><strong>Krochi</strong></td><td>Sobreviver 20 min</td><td>Cross</td><td>Duas revivals + movimento mais rápido; muito indulgente</td></tr>
-398|        <tr><td><strong>Suor Clerici</strong></td><td>Encontrar 1 Floor Chicken</td><td>Heaven Sword</td><td>+30 HP e bônus de área; fácil de manter vivo</td></tr>
-399|        <tr><td><strong>Pasqualina</strong></td><td>Nivelar Imelda a 4</td><td>Runetracer</td><td>Runetracer ricocheteia e escala com praticamente todo stat</td></tr>
-400|        <tr><td><strong>Dommario</strong></td><td>5 min na Inlaid Library</td><td>King Bible</td><td>Lento, mas King Bible orbita automaticamente</td></tr>
-401|      </tbody>
-402|    </table>
-403|  </div>
-404|
-405|  <blockquote>
-406|    "Se você quer apontar para um inimigo e matá-lo, escolha Gennaro. Se você gosta de ficar parado matando inimigos, escolha Poe."
-407|    <span class="author">— u/Vorral</span>
-408|  </blockquote>
-409|
-410|  <h3>Qual Mapa Começar</h3>
-411|  <p><strong>Comece na Inlaid Library, não em Mad Forest.</strong></p>
-412|  <ul>
-413|    <li>Curva de dificuldade mais suave</li>
-414|    <li>Dois itens grátis no chão: <strong>Tome</strong> (esquerda) e <strong>Stone Mask</strong> (direita) — podem ser pegos mesmo com slots passivos cheios</li>
-415|  </ul>
-416|  <blockquote>
-417|    "Eu senti que Mad Forest era muito espaçado e vazio de inimigos no começo. Me diverti muito mais praticando na Inlaid Library."
-418|    <span class="author">— u/Goken222</span>
-419|  </blockquote>
-420|
-421|  <h3>O Que a Maioria dos Iniciantes Não Sabe</h3>
-422|  <ul>
-423|    <li><strong>Gemas de XP nunca desaparecem</strong> — se você deixar gemas para trás, elas se consolidam numa gema vermelha quando você voltar</li>
-424|    <li>Você não perde XP ao se mover, mas <strong>pode perder se o Pentagram apagar a pilha</strong></li>
-425|  </ul>
-426|</section>
-427|
-428|<!-- UNLOCK -->
-429|<section class="section" id="unlock" data-section="unlock">
-430|  <h2>🔓 Guia de Unlocks</h2>
-431|
-432|  <h3>Como o Sistema de Unlocks Funciona</h3>
-433|  <p>O menu <strong>Unlocks</strong> é uma checklist ordenada de objetivos (sobreviver 10 min, evoluir uma arma, alcançar marcos).</p>
-434|  <p>Trabalhe de cima para baixo — é organizado por dificuldade.</p>
-435|  <blockquote>
-436|    "Use o menu 'Unlocks' como guia. Ele te diz exatamente como progredir numa checklist ordenada."
-437|    <span class="author">— u/23kukulcan</span>
-438|  </blockquote>
-439|
-440|  <h3>O Menu Secrets é Diferente</h3>
-441|  <p>O menu Secrets (desbloqueado depois de algum progresso) tem dicas intencionalmente vagas.</p>
-442|  <p><strong>Use a wiki para Secrets</strong> — a Poncle os projetou para serem descobertos pela comunidade.</p>
-443|  <blockquote>
-444|    "Tudo no menu de unlocks é direto... A maioria das coisas no menu de secrets é intencionalmente extremamente vaga e frequentemente requer consultar a wiki."
-445|    <span class="author">— u/DoveCannon</span>
-446|  </blockquote>
-447|  <div class="highlight">
-448|    <p>⚠️ <strong>Consultar a wiki para Secrets NÃO é trapaça</strong> — os desenvolvedores esperam que você use a wiki para esta seção.</p>
-449|  </div>
-450|
-451|  <h3>Erro Comum de Unlock</h3>
-452|  <p><strong>Não invista pesado em Greed no início.</strong> Você ganha muito mais ouro sobrevivendo por mais tempo e abrindo mais baús do que com um multiplicador em runs curtas. Compre PowerUps ofensivos primeiro.</p>
-453|</section>
-454|
-455|<!-- PROGRESSION -->
-456|<section class="section" id="progression" data-section="progression">
-457|  <h2>⚡ Guia de Progressão</h2>
-458|
-459|  <h3>PowerUps — Upgrades Permanentes</h3>
-460|  <p>Comprados com ouro entre as runs; valem para todo personagem e fase. <strong>Reembolsáveis a qualquer momento sem custo</strong> — erros iniciais não custam nada.</p>
-461|
-462|  <h4>Prioridade para Iniciantes</h4>
-463|  <div class="table-wrap">
-464|    <table>
-465|      <thead>
-466|        <tr><th>PowerUp</th><th>Prioridade</th><th>Por que</th></tr>
-467|      </thead>
-468|      <tbody>
-469|        <tr><td><strong>Amount</strong></td><td><span class="tag tag-high">ALTA</span></td><td>+1 projétil em toda arma — maior impacto por compra</td></tr>
-470|        <tr><td><strong>Might</strong></td><td><span class="tag tag-high">ALTA</span></td><td>Aumento de dano plano para todas as armas</td></tr>
-471|        <tr><td><strong>Growth</strong></td><td><span class="tag tag-high">ALTA</span></td><td>+XP por gema → níveis mais rápidos → evoluções mais cedo</td></tr>
-472|        <tr><td><strong>Cooldown</strong></td><td><span class="tag tag-high">ALTA</span></td><td>Reduz intervalo entre disparos; forte em King Bible e Runetracer</td></tr>
-473|        <tr><td><strong>Greed</strong></td><td><span class="tag tag-med">MÉDIA</span></td><td>Multiplicador de ouro — invista depois que runs passarem de 15 min</td></tr>
-474|        <tr><td><strong>Move Speed</strong></td><td><span class="tag tag-med">MÉDIA</span></td><td>Ajuda a desviar; também escala dano de algumas armas</td></tr>
-475|        <tr><td><strong>Armor</strong></td><td><span class="tag tag-low">BAIXA</span></td><td>Não resolve o loop principal; invista depois dos ofensivos</td></tr>
-476|        <tr><td><strong>Revival</strong></td><td><span class="tag tag-low">BAIXA</span></td><td>Útil, mas muitas vezes você só morre de novo se a run estiver fraca</td></tr>
-477|      </tbody>
-478|    </table>
-479|  </div>
-480|  <p><em>Sobrevivência vem de matar rápido — kills → gemas de XP → níveis → armas melhores.</em></p>
-481|
-482|  <h3>Progressão de Fases</h3>
-483|  <div class="table-wrap">
-484|    <table>
-485|      <thead>
-486|        <tr><th>#</th><th>Fase</th><th>Notas</th></tr>
-487|      </thead>
-488|      <tbody>
-489|        <tr><td>1</td><td><strong>Inlaid Library</strong></td><td>Melhor para aprender; Tome e Stone Mask grátis no chão</td></tr>
-490|        <tr><td>2</td><td>Mad Forest</td><td>Padrão, mas mais difícil no começo devido à densidade de inimigos</td></tr>
-491|        <tr><td>3</td><td><strong>Dairy Plant</strong></td><td>Grande salto de dificuldade — pegue o <strong>Milky Way Map</strong> aqui</td></tr>
-492|        <tr><td>4</td><td>Gallo Tower</td><td>Mais difícil; precisa de PowerUps sólidos</td></tr>
-493|        <tr><td>5</td><td>Cappella Magna</td><td>Fase final; tem o chefe Ender que desbloqueia Limit Break</td></tr>
-494|      </tbody>
-495|    </table>
-496|  </div>
-497|  <blockquote>
-498|    "Dairy Plant é um grande salto de dificuldade, então não sinta que precisa forçar os 30 minutos lá antes de tentar outras coisas."
-499|    <span class="author">— u/UncomfortableAnswers</span>
-500|  </blockquote>
-501|
+
+<header>
+  <h1>🧛 Vampire Survivors</h1>
+  <p>Guia Completo: Dicas, Builds e Progressão para Iniciantes</p>
+  <div class="header-meta">
+    Baseado no guia de <a href="https://rogueranker.com/vampire-survivors-guide/" target="_blank">RogueRanker</a> •
+    Steven (100+ horas) • Março 2026
+  </div>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Buscar no guia..." autofocus>
+  </div>
+</header>
+
+<!-- ─── TOC ─── -->
+<div class="toc-wrapper">
+  <div class="toc-card">
+    <h2>📑 Sumário</h2>
+    <div class="toc-grid">
+      <a href="#tldr">🎯 TL;DR — Dicas Rápidas</a>
+      <a href="#beginners">👶 Guia para Iniciantes</a>
+      <a href="#unlock">🔓 Guia de Unlocks</a>
+      <a href="#progression">⚡ Guia de Progressão</a>
+      <a href="#builds">🏗️ Melhores Builds</a>
+      <a href="#evolutions">📊 Tabela de Evoluções</a>
+      <a href="#faq">❓ FAQ</a>
+      <a href="#comparison">🆚 VS vs Alternativas</a>
+      <a href="#conclusion">💎 Conclusão</a>
+    </div>
+  </div>
+</div>
+
+<!-- ─── MAIN ─── -->
+<main id="guideContent">
+
+<!-- TL;DR -->
+<section class="section" id="tldr" data-section="tldr">
+  <h2>🎯 TL;DR — Dicas Rápidas</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Dica</th><th>Por que importa</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Evolua uma arma por vez</strong></td><td>Evoluções exigem arma no nível 8; espalhar atrasa seus maiores power spikes</td></tr>
+        <tr><td><strong>Comece na Inlaid Library</strong></td><td>Curva de dificuldade mais suave que Mad Forest, além de itens grátis no chão que expandem seus slots passivos</td></tr>
+        <tr><td><strong>Invista em Amount e Might primeiro nos PowerUps</strong></td><td>Projéteis extras e dano plano aceleram o loop de leveling mais que qualquer stat defensivo</td></tr>
+        <tr><td><strong>Siga o menu Unlocks de cima pra baixo</strong></td><td>É o guia de progressão real do jogo; cada objetivo desbloqueia algo útil</td></tr>
+        <tr><td><strong>Pegue o Milky Way Map cedo</strong></td><td>O minimapa muda como você navega em cada fase; pegue em Dairy Plant assim que puder</td></tr>
+        <tr><td><strong>Mantenha Garlic e King Bible no início</strong></td><td>Dano e controle de área enquanto você aprende as evoluções</td></tr>
+        <tr><td><strong>Não se estresse com a ordem dos PowerUps</strong></td><td>Você pode reembolsar tudo sem custo — erros iniciais não custam nada</td></tr>
+        <tr><td><strong>Wiki para Secrets, Unlocks para todo o resto</strong></td><td>Secrets são propositalmente vagos; a wiki é o que a Poncle espera que você use</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- BEGINNER -->
+<section class="section" id="beginners" data-section="beginners">
+  <h2>👶 Guia para Iniciantes</h2>
+
+  <h3>O Loop Principal</h3>
+  <p>Você escolhe um personagem, se move pelo mapa, suas armas atiram automaticamente e os inimigos vêm em ondas que escalam até você morrer ou o marcador de 30 minutos chegar. Nesse ponto, um Ceifador imatável aparece e encerra sua run.</p>
+  <p>Cada vez que você sobe de nível, escolhe um entre três (ou quatro, com os PowerUps certos) itens para adicionar ou evoluir. Armas evoluem para versões muito mais poderosas se você cumprir condições específicas — geralmente maximizar a arma no nível 8 e ter um item passivo específico no inventário ao abrir um baú.</p>
+  <p><strong>Dica de ouro:</strong> Essas armas evoluídas são o jogo inteiro.</p>
+
+  <h3>O Maior Erro de Iniciante</h3>
+  <blockquote>
+    "Foque em uma coisa sempre que possível, só pegue itens novos se não puder fortalecer um existente."
+    <span class="author">— u/LolYouFuckingLoser</span>
+  </blockquote>
+  <p><strong>Uma arma no máximo é muito mais poderosa que quatro armas no nível 1.</strong> Você precisa da arma máxima para desbloquear a evolução, e as evoluções são o que carregam as runs após os 20 minutos.</p>
+
+  <h3>Melhores Personagens para Começar</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Personagem</th><th>Desbloqueio</th><th>Arma Inicial</th><th>Por que é bom</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Imelda</strong></td><td>Padrão</td><td>Magic Wand</td><td>Bônus de XP até +30% a cada 5 níveis — evolui mais rápido</td></tr>
+        <tr><td><strong>Poe</strong></td><td>Padrão</td><td>Garlic</td><td>Campo de dano passivo mantém inimigos fracos longe</td></tr>
+        <tr><td><strong>Gennaro</strong></td><td>500 gold</td><td>Knife</td><td>+1 projétil em toda arma desde o início</td></tr>
+        <tr><td><strong>Krochi</strong></td><td>Sobreviver 20 min</td><td>Cross</td><td>Duas revivals + movimento mais rápido; muito indulgente</td></tr>
+        <tr><td><strong>Suor Clerici</strong></td><td>Encontrar 1 Floor Chicken</td><td>Heaven Sword</td><td>+30 HP e bônus de área; fácil de manter vivo</td></tr>
+        <tr><td><strong>Pasqualina</strong></td><td>Nivelar Imelda a 4</td><td>Runetracer</td><td>Runetracer ricocheteia e escala com praticamente todo stat</td></tr>
+        <tr><td><strong>Dommario</strong></td><td>5 min na Inlaid Library</td><td>King Bible</td><td>Lento, mas King Bible orbita automaticamente</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote>
+    "Se você quer apontar para um inimigo e matá-lo, escolha Gennaro. Se você gosta de ficar parado matando inimigos, escolha Poe."
+    <span class="author">— u/Vorral</span>
+  </blockquote>
+
+  <h3>Qual Mapa Começar</h3>
+  <p><strong>Comece na Inlaid Library, não em Mad Forest.</strong></p>
+  <ul>
+    <li>Curva de dificuldade mais suave</li>
+    <li>Dois itens grátis no chão: <strong>Tome</strong> (esquerda) e <strong>Stone Mask</strong> (direita) — podem ser pegos mesmo com slots passivos cheios</li>
+  </ul>
+  <blockquote>
+    "Eu senti que Mad Forest era muito espaçado e vazio de inimigos no começo. Me diverti muito mais praticando na Inlaid Library."
+    <span class="author">— u/Goken222</span>
+  </blockquote>
+
+  <h3>O Que a Maioria dos Iniciantes Não Sabe</h3>
+  <ul>
+    <li><strong>Gemas de XP nunca desaparecem</strong> — se você deixar gemas para trás, elas se consolidam numa gema vermelha quando você voltar</li>
+    <li>Você não perde XP ao se mover, mas <strong>pode perder se o Pentagram apagar a pilha</strong></li>
+  </ul>
+</section>
+
+<!-- UNLOCK -->
+<section class="section" id="unlock" data-section="unlock">
+  <h2>🔓 Guia de Unlocks</h2>
+
+  <h3>Como o Sistema de Unlocks Funciona</h3>
+  <p>O menu <strong>Unlocks</strong> é uma checklist ordenada de objetivos (sobreviver 10 min, evoluir uma arma, alcançar marcos).</p>
+  <p>Trabalhe de cima para baixo — é organizado por dificuldade.</p>
+  <blockquote>
+    "Use o menu 'Unlocks' como guia. Ele te diz exatamente como progredir numa checklist ordenada."
+    <span class="author">— u/23kukulcan</span>
+  </blockquote>
+
+  <h3>O Menu Secrets é Diferente</h3>
+  <p>O menu Secrets (desbloqueado depois de algum progresso) tem dicas intencionalmente vagas.</p>
+  <p><strong>Use a wiki para Secrets</strong> — a Poncle os projetou para serem descobertos pela comunidade.</p>
+  <blockquote>
+    "Tudo no menu de unlocks é direto... A maioria das coisas no menu de secrets é intencionalmente extremamente vaga e frequentemente requer consultar a wiki."
+    <span class="author">— u/DoveCannon</span>
+  </blockquote>
+  <div class="highlight">
+    <p>⚠️ <strong>Consultar a wiki para Secrets NÃO é trapaça</strong> — os desenvolvedores esperam que você use a wiki para esta seção.</p>
+  </div>
+
+  <h3>Erro Comum de Unlock</h3>
+  <p><strong>Não invista pesado em Greed no início.</strong> Você ganha muito mais ouro sobrevivendo por mais tempo e abrindo mais baús do que com um multiplicador em runs curtas. Compre PowerUps ofensivos primeiro.</p>
+</section>
+
+<!-- PROGRESSION -->
+<section class="section" id="progression" data-section="progression">
+  <h2>⚡ Guia de Progressão</h2>
+
+  <h3>PowerUps — Upgrades Permanentes</h3>
+  <p>Comprados com ouro entre as runs; valem para todo personagem e fase. <strong>Reembolsáveis a qualquer momento sem custo</strong> — erros iniciais não custam nada.</p>
+
+  <h4>Prioridade para Iniciantes</h4>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>PowerUp</th><th>Prioridade</th><th>Por que</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Amount</strong></td><td><span class="tag tag-high">ALTA</span></td><td>+1 projétil em toda arma — maior impacto por compra</td></tr>
+        <tr><td><strong>Might</strong></td><td><span class="tag tag-high">ALTA</span></td><td>Aumento de dano plano para todas as armas</td></tr>
+        <tr><td><strong>Growth</strong></td><td><span class="tag tag-high">ALTA</span></td><td>+XP por gema → níveis mais rápidos → evoluções mais cedo</td></tr>
+        <tr><td><strong>Cooldown</strong></td><td><span class="tag tag-high">ALTA</span></td><td>Reduz intervalo entre disparos; forte em King Bible e Runetracer</td></tr>
+        <tr><td><strong>Greed</strong></td><td><span class="tag tag-med">MÉDIA</span></td><td>Multiplicador de ouro — invista depois que runs passarem de 15 min</td></tr>
+        <tr><td><strong>Move Speed</strong></td><td><span class="tag tag-med">MÉDIA</span></td><td>Ajuda a desviar; também escala dano de algumas armas</td></tr>
+        <tr><td><strong>Armor</strong></td><td><span class="tag tag-low">BAIXA</span></td><td>Não resolve o loop principal; invista depois dos ofensivos</td></tr>
+        <tr><td><strong>Revival</strong></td><td><span class="tag tag-low">BAIXA</span></td><td>Útil, mas muitas vezes você só morre de novo se a run estiver fraca</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><em>Sobrevivência vem de matar rápido — kills → gemas de XP → níveis → armas melhores.</em></p>
+
+  <h3>Progressão de Fases</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Fase</th><th>Notas</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td><strong>Inlaid Library</strong></td><td>Melhor para aprender; Tome e Stone Mask grátis no chão</td></tr>
+        <tr><td>2</td><td>Mad Forest</td><td>Padrão, mas mais difícil no começo devido à densidade de inimigos</td></tr>
+        <tr><td>3</td><td><strong>Dairy Plant</strong></td><td>Grande salto de dificuldade — pegue o <strong>Milky Way Map</strong> aqui</td></tr>
+        <tr><td>4</td><td>Gallo Tower</td><td>Mais difícil; precisa de PowerUps sólidos</td></tr>
+        <tr><td>5</td><td>Cappella Magna</td><td>Fase final; tem o chefe Ender que desbloqueia Limit Break</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <blockquote>
+    "Dairy Plant é um grande salto de dificuldade, então não sinta que precisa forçar os 30 minutos lá antes de tentar outras coisas."
+    <span class="author">— u/UncomfortableAnswers</span>
+  </blockquote>
